@@ -1,0 +1,10 @@
+<!--components/dialog/dialog.wxml-->
+<view class="{{isOut ? 'dialogContainer contentOut' : 'dialogContainer'}}">
+  <view class="content">
+    <view class="dialogTitle">{{title}}</view>
+    <view class="dialogContent">{{content}}</view>
+    <view class="dialogHandle">
+      <view class="btn" bindtap="dialogTap">确定</view>
+    </view>
+  </view>
+</view>

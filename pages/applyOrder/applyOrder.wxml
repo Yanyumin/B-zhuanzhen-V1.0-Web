@@ -1,0 +1,151 @@
+<!--pages/applyOrder/applyOrder.wxml-->
+<view class="applyContainer" style="min-height: {{winHeight}}px">
+  <view class="beforeInfo" wx:if="{{!isSuccess}}">
+    <!-- 患者信息 -->
+    <view class="patientInfo infoContainer">
+      <view class="title">患者信息</view>
+      <view class="content">
+        <view class="contentItem">
+          <view class="itemName">患者姓名：</view>
+          <view class="itemInput">
+            <input type="text" bindinput="patientNameChange" value="{{patientName}}" />
+          </view>
+        </view>
+        <view class="contentItem">
+          <view class="itemName">身份证：</view>
+          <view class="itemInput">
+            <input type="idcard" bindinput="idNumberChange" value="{{idNumber}}" />
+          </view>
+        </view>
+        <view class="contentItem">
+          <view class="itemName">联系电话：</view>
+          <view class="itemInput">
+            <input type="number" bindinput="phoneChange" value="{{phone}}" />
+          </view>
+        </view>
+        <view class="contentItem">
+          <view class="itemName">省妇幼就诊卡</view>
+          <view class="itemInput">
+            <input type="number" bindinput="cardNumChange" value="{{cardNum}}" />
+          </view>
+        </view>
+        <view class="contentItem">
+          <view class="itemName">联系地址</view>
+        </view>
+        <view class="contentItem">
+          <view class="textBox" style="height: {{height}}">
+            <textarea class="textCon" bindinput="connectAddressInput" bindlinechange="lineChange" value="{{connectAddress}}" auto-height />
+          </view>
+        </view>
+        <view class="uploadItem">
+          <view class="uploadBox" wx:if="{{historyPics.length > 0}}" wx:for="{{historyPics}}" wx:key="item">
+            <image src="{{item}}" data-index="{{index}}" bindtap="historyShowImg"></image>
+            <text class="deleteIcon" bindtap="historyDelete" data-index="{{index}}">×</text>
+          </view>
+          <view class="uploadBox" bindtap="uploadHistoryPic">
+            <text>＋</text>
+          </view>
+          <view class="uploadContent" wx:if="{{historyPics.length == 0}}">
+            <view class="uploadTitle">病历资料</view>
+            <view class="uploadTip">
+              请上传病历、检查、影像等辅助资料以便医生全面了解病情
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 转诊信息 -->
+    <view class="zhuanzhenInfo infoContainer">
+      <view class="content">
+        <view class="contentItem">
+          <radio-group bind:change="zhuanzhenTypeChange">
+            <label class="weui-cell weui-check__label" wx:for="{{zhuanzhenType}}" wx:key="name">
+              <view class="weui-cell__hd">
+                <radio color="#b76285" value="{{item.name}}" checked="{{item.checked}}"/>
+              </view>
+              <view class="weui-cell__bd">{{item.name}}</view>
+            </label>
+          </radio-group>
+        </view>
+        <view class="contentItem">
+          <view class="itemName">转诊医院：</view>
+          <view class="itemInput pickerBox">
+            <picker bindchange="hospBindChange" value="{{index}}" range="{{HospClumn}}">
+              <view class="picker">{{zhuanzhenHospName}}</view>
+              <view class="stringle"></view>
+            </picker>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 申请单位信息 -->
+    <view class="applyInfo infoContainer">
+      <view class="title">申请单位信息</view>
+      <view class="content">
+        <view class="contentItem">
+          <view class="itemName">单位名称：</view>
+          <view class="itemInput pickerBox">
+            <picker bindchange="partBindChange" value="{{index}}" range="{{partClumn}}">
+              <view class="picker">{{applyPartName}}</view>
+              <view class="stringle"></view>
+            </picker>
+          </view>
+        </view>
+        <view class="contentItem">
+          <view class="itemName">申请科室：</view>
+          <view class="itemInput">
+            <input type="text" bindinput="applyDepartNameChange" value="{{applyDepartName}}" />
+          </view>
+        </view>
+        <view class="contentItem">
+          <view class="itemName">申请医生：</view>
+          <view class="itemInput">
+            <input type="text" bindinput="applyDocChange" value="{{applyDoc}}" />
+          </view>
+        </view>
+        <view class="contentItem">
+          <view class="itemName">联系电话：</view>
+          <view class="itemInput">
+            <input type="number" bindinput="applyPhoneChange" value="{{applyPhone}}" />
+          </view>
+        </view>
+        <view class="contentItem">
+          <view class="itemName">发起人：</view>
+          <view class="itemInput">
+            <input type="text" bindinput="applyManChange" value="{{applyMan}}" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 是否同意协议 -->
+    <view class="agreement">
+      <view class="radioBox">
+        <radio-group bind:change="serviceChange">
+          <view class="serviceBox" wx:for="{{service}}" wx:key="name">
+            <view class="weui-cell__hd">
+              <radio color="#333333" 
+              bindtap="serviceRadioTap"
+              data-index="{{index}}" value="{{item.name}}" checked="{{item.checked}}"/>
+            </view>
+            <view class="weui-cell__bd">{{item.name}}<text>《转诊xx协议》</text></view>
+          </view>
+        </radio-group>
+      </view>
+    </view>
+    <!-- 提交按钮 -->
+    <view class="submitBox">
+      <view class="{{serviceValue == '我同意' ? 'active' : ''}}" bindtap="submitForm">提交</view>
+    </view>
+  </view>
+  <view class="afterInfo" wx:if="{{isSuccess}}">
+    <view>
+      <icon size="18" class="icon-box-img" color="#38dd7e" type="success" size="93"></icon>
+    </view>
+    <view class="title">提交成功，等待审核</view>
+    <view class="tips">会诊信息预计会在48小时内审核完成，审核通过后系统会发送短信提示，请随时留意</view>
+    <view class="viewBtns">
+      <view class="viewDetail">查看申请</view>
+      <view class="goIndex">返回首页</view>
+    </view>
+  </view>
+</view>

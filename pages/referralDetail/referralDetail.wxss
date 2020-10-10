@@ -1,0 +1,204 @@
+/* pages/referralDetail/referralDetail.wxss */
+.detailContainer {
+  padding: 0 20rpx 40rpx;
+  background: #f2f2f2;
+  padding-top: 25rpx;
+  box-sizing: border-box;
+}
+.infoContainer:first-child {
+  margin: 0;
+}
+.infoContainer {
+  border-radius: 10rpx;
+  background: #fff;
+  margin-top: 25rpx;
+  padding: 0 40rpx 30rpx;
+}
+.infoContainer .title {
+  line-height: 80rpx;
+  color: #949494;
+  border-bottom: 1px solid #e4e4e4;
+  font-size: 30rpx;
+}
+.infoContainer .content .contentItem {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  padding-top: 20rpx;
+  justify-content: space-between;
+}
+.infoContainer .content .contentItem .itemName {
+  flex: 2;
+  color: #c7c7c7;
+}
+.infoContainer .content .contentItem .itemInput {
+  flex: 4;
+  height: 60rpx;
+  box-sizing: border-box;
+  line-height: 60rpx;
+  color: #393939;
+}
+.uploadItem {
+  display: flex;
+  flex-wrap: wrap;
+}
+.uploadItem .uploadBox {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34rpx;
+  margin-right: 20rpx;
+  position: relative;
+  margin-top: 20rpx;
+  border-radius: 10rpx;
+  border: 1px solid #ccc;
+}
+.uploadItem .uploadBox image {
+  width: 100%;
+  height: 100%;
+}
+.zhuanzhenInfoStatus .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.zhuanzhenInfoStatus .title .status.pass {
+  color: #75dcdc;
+}
+.zhuanzhenInfoStatus .title .status.return {
+  color: #b76285;
+}
+.zhuanzhenInfoStatus .title .status.wait {
+  color: #2aaaff;
+}
+.zhuanzhenInfoStatus .content {
+  padding: 20px 0 0;
+}
+.zhuanzhenInfoStatus .content .none {
+  color: #c3c3c3;
+  font-size: 28rpx;
+  text-align: center;
+}
+.zhuanzhenInfoStatus .content .info {
+  color: #818181;
+  font-size: 28rpx;
+  word-wrap: break-word;
+}
+.zhuanzhenInfoStatus .content .info.return{
+   color: #b76285
+ }
+ .handleBtns {
+   display: flex;
+   align-items: center;
+   margin-top: 40rpx;
+  justify-content: space-between;
+ }
+ .handleBtns > view {
+   flex-basis: 30%;
+   height: 60rpx;
+   font-size: 28rpx;
+   color: #fff;
+   border-radius: 30rpx;
+   text-align: center;
+   line-height: 60rpx;
+ }
+.reply {
+   background: #57b9f4;
+ }
+.return {
+   background: #b76285;
+ }
+.pass {
+   background: #33cccc;
+ }
+ .handleContainer .mask {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+ }
+ .handleContent {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 0 40rpx 50rpx; 
+  font-size: 28rpx;
+  color: #8a8a8a;
+ }
+ .handleContent .handleTitle {
+   text-align: center;
+   border-bottom: 1px solid #f2f2f2;
+   line-height: 80rpx;
+ }
+ .contentList .listItem {
+  margin-top: 50rpx;
+  display: flex;
+  align-items: center;
+ }
+ .contentList .listItem .itemName {
+   flex: 3;
+ }
+ .contentList .listItem .itemInput {
+  flex: 4;
+  height: 60rpx;
+  border-radius: 30rpx;
+  border: 1px solid #f2f2f2;
+  position: relative;
+  padding: 0 60rpx 0 20rpx;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+.contentList .listItem .itemInput .stringle {
+  border: 5px solid;
+  border-color: #cbcbcb transparent transparent;
+  position: absolute;
+  top: 48%;
+  right: 30rpx;
+  transform: translate(-50% 0);
+}
+.handleContainer .btns {
+  height: 60rpx;
+  font-size: 28rpx;
+  color: #fff;
+  border-radius: 30rpx;
+  text-align: center;
+  line-height: 60rpx;
+  margin-top: 50rpx;
+}
+.returnOpinion {
+  margin: 40rpx 0 0;
+  border: 1px solid #f2f2f2;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  height: 200rpx;
+}
+.returnOpinion textarea {
+  width: 100%;
+  height: 100%;
+}
+picker {
+  height: 100%;
+  width: 100%;
+  line-height: 100%;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+}
+.picker {
+  width: 28vw !important;
+  line-height: 100%;
+  box-sizing: border-box;
+  flex-basis: 100%;
+  height: 62rpx;
+}

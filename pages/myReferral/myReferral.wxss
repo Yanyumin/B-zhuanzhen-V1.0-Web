@@ -1,0 +1,79 @@
+/* pages/myReferral/myReferral.wxss */
+.myContainer {
+  background: #f2f2f2;
+  padding: 20rpx;
+}
+.contentBox {
+  background: #fff;
+  border-radius: 10rpx;
+  padding: 10rpx 40rpx 30rpx;
+  box-sizing: border-box;
+}
+.contentBox .topTab {
+  font-size: 30rpx;
+  line-height: 80rpx;
+  border-bottom: 1px solid #f2f2f2;
+  color: #b9b9b9;
+  display: flex;
+  align-items: center;
+  padding: 0 40rpx;
+  justify-content: space-between;
+}
+.contentBox .topTab .tabItem {
+  flex-basis: 48%;
+  text-align: center;
+  box-sizing: border-box;
+}
+.contentBox .topTab .tabItem.active {
+  color: #b76285;
+  border-bottom: 2px solid #b76285;
+}
+.tabContent .itemList .listItem {
+  display: flex;
+  align-items: center;
+  padding: 25rpx 0;
+  border-bottom: 1px solid #e4e4e4;
+}
+.tabContent .itemList .listItem .itemLogo {
+  flex: 1;
+}
+.tabContent .itemList .listItem .itemLogo image {
+  border-radius: 50%;
+  height: 50rpx;
+  width: 50rpx;
+}
+.tabContent .itemList .listItem .itemInfo {
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.tabContent .itemList .listItem .itemInfo .itemName {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10rpx;
+}
+.tabContent .itemList .listItem .itemInfo .itemName .name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #666;
+}
+.tabContent .itemList .listItem .itemInfo .itemName .status {
+  font-size: 28rpx;
+}
+.tabContent .itemList .listItem .itemInfo .itemName .status.pass {
+  color: #75dcdc;
+}
+.tabContent .itemList .listItem .itemInfo .itemName .status.return {
+  color: #b76285;
+}
+.tabContent .itemList .listItem .itemInfo .itemName .status.wait {
+  color: #2aaaff;
+}
+.tabContent .itemList .listItem .itemInfo .itemIntro{
+  color: rgb(131, 131, 131);
+  font-size: 26rpx;
+  word-break: break-all;
+  line-height: 32rpx;
+}

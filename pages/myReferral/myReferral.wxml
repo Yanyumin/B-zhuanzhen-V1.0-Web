@@ -1,0 +1,43 @@
+<!--pages/myReferral/myReferral.wxml-->
+<view class="myContainer"style="min-height: {{winHeight}}px">
+  <view class="contentBox">
+    <view class="topTab">
+      <view class="{{tabChange == 0 ? 'tabItem active' : 'tabItem'}}" bindtap="tabTap" data-tabs='0'>我发起的</view>
+      <view class="{{tabChange == 1 ? 'tabItem active' : 'tabItem'}}" bindtap="tabTap" data-tabs='1'>我接收的</view>
+    </view>
+    <view class="tabContent">
+      <view class="itemContent" wx:if="{{tabChange == 0}}">
+        <view class="itemList">
+          <view class="listItem">
+            <view class="itemLogo">
+              <image src="../../imgs/swiper.jpg" />
+            </view>
+            <view class="itemInfo">
+              <view class="itemName">
+                <text class='name'>李医生</text>
+                <text class='status pass'>已通过</text>
+              </view>
+              <view class="itemIntro">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="itemContent" wx:if="{{tabChange == 1}}">
+        <view class="itemList">
+          <view class="listItem">
+            <view class="itemLogo">
+              <image src="../../imgs/swiper.jpg" />
+            </view>
+            <view class="itemInfo">
+              <view class="itemName">
+                <text class='name'>李医生</text>
+                <text class='status return'>已通过</text>
+              </view>
+              <view class="itemIntro">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

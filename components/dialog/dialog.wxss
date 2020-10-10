@@ -1,0 +1,60 @@
+/* components/dialog/dialog.wxss */
+@keyframes fade-in {  
+  0% {opacity: 0;}/*初始状态 透明度为0*/  
+  40% {opacity: 0;}/*过渡状态 透明度为0*/  
+  100% {opacity: 1;}/*结束状态 透明度为1*/  
+} 
+@keyframes fade-out {  
+  0% {opacity: 1;}/*初始状态 透明度为0*/  
+  40% {opacity: 0;}/*过渡状态 透明度为0*/  
+  100% {opacity: 0;}/*结束状态 透明度为1*/  
+} 
+.dialogContainer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  animation: fade-in;/*动画名称*/  
+  animation-duration: 0.5s;/*动画持续时间*/ 
+}
+.dialogContainer .content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 40rpx; 
+}
+.dialogContainer.contentOut {
+  animation: fade-out;/*动画名称*/  
+  animation-duration: 0.5s;/*动画持续时间*/ 
+}
+.dialogContainer .content .dialogTitle {
+  font-size: 30rpx;
+  color: #666;
+  padding-bottom: 40rpx;
+}
+.dialogContainer .content .dialogContent {
+  font-size: 28rpx;
+  color: #666;
+  padding-bottom: 40rpx;
+  line-height: 36rpx;
+}
+/* .dialogContainer .content .dialogHandle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+.dialogContainer .content .dialogHandle .btn {
+  height: 60rpx;
+  border-radius: 30rpx;
+  background: #b76285;
+  color: #fff;
+  font-size: 26rpx;
+  text-align: center;
+  line-height: 60rpx;
+}
