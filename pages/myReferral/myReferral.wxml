@@ -2,13 +2,15 @@
 <wxs src="../../utils/formater.wxs" module="filter" />
 <view class="myContainer"style="min-height: {{winHeight}}px">
   <view class="contentBox">
-    <view class="topTab">
-      <view class="{{tabChange == 0 ? 'tabItem active' : 'tabItem'}}" bindtap="tabTap" data-tabs='0'>我发起的</view>
-      <view class="{{tabChange == 1 ? 'tabItem active' : 'tabItem'}}" bindtap="tabTap" data-tabs='1'>我接收的</view>
+    <view class="tabBox">
+      <view class="topTab">
+        <view class="{{tabChange == 0 ? 'tabItem active' : 'tabItem'}}" bindtap="tabTap" data-tabs='0'>我发起的</view>
+        <view class="{{tabChange == 1 ? 'tabItem active' : 'tabItem'}}" bindtap="tabTap" data-tabs='1'>我接收的</view>
+      </view>
     </view>
     <view class="tabContent">
       <view class="itemContent" wx:if="{{tabChange == 0}}">
-        <view class="itemList">
+        <view class="itemList" wx:if="{{list1.length > 0}}">
           <view class="listItem" wx:for="{{list1}}" wx:key="id" data-id="{{item.id}}" data-type="1" bindtap="goViewDetail">
             <!-- <view class="itemLogo">
               <image src="../../imgs/swiper.jpg" />
@@ -25,6 +27,8 @@
             </view>
           </view>
         </view>
+        <view class="none" wx:else>暂无数据</view>
+        <view class="none" wx:if="{{isOver1}}">已经到底啦~</view>
       </view>
       <view class="itemContent" wx:if="{{tabChange == 1}}">
         <view class="itemList">
@@ -41,6 +45,7 @@
             </view>
           </view>
         </view>
+        <view class="none" wx:if="{{isOver1}}">已经到底啦~</view>
       </view>
     </view>
   </view>

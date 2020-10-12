@@ -10,7 +10,7 @@ Page({
     id: '',
     referralType: '',
     detailData: {},
-    historyPics: ['../../imgs/swiper.jpg','../../imgs/swiper.jpg','../../imgs/swiper.jpg','../../imgs/swiper.jpg','../../imgs/swiper.jpg'],
+    historyPics: [],
     partClumn: ['ceshi'],
     // 转发
     replyDepartment: '',
@@ -44,8 +44,11 @@ Page({
         if (res.data.resultCode == 1) {
           detailData = res.data.row
           detailData.recCreateDt = formateInputTime(detailData.recCreateDt)
+          let historyPics = that.data.historyPics
+          historyPics = detailData.pics.split(',')
           this.setData({
-            detailData
+            detailData,
+            historyPics
           })
         } else {
           wx.showToast({
@@ -66,6 +69,41 @@ Page({
     wx.previewImage({
         urls: that.data.historyPics,
         current: that.data.historyPics[e.currentTarget.dataset.index]
+    })
+  },
+  // 获取科室列表信息
+  getDepartmentList () {
+    let that = this
+    let departmentNames = that.data.departmentNames
+    departmentNames = []
+    request({
+      url: 'ReferralPlatform/ReferralDepartment',
+      method: 'POST'
+    }).then(res => {
+      if (res.statusCode === 200) {
+        if (res.data.resultCode == 1) {
+          let resultData = res.data.data
+          resultData.forEach(item => {
+            departmentNames.push(item.name)
+          })
+          that.setData({
+            departmentDatas: resultData,
+            departmentNames
+          })
+        } else {
+          wx.showToast({
+            title: res.data.message || '科室信息获取失败',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      } else {
+        wx.showToast({
+          title: '科室信息获取失败',
+          icon: 'none',
+          duration: 2000
+        })
+      }
     })
   },
   // 转诊
@@ -135,6 +173,10 @@ Page({
       referralType: options.type
     })
     this.getDetailData()
+    // 如果是我接收的
+    if (options.type == 2) {
+      this.getDepartmentList()
+    }
   },
 
   /**

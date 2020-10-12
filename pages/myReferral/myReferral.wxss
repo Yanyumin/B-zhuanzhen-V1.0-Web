@@ -10,6 +10,14 @@
   padding: 10rpx 40rpx 30rpx;
   box-sizing: border-box;
 }
+.tabBox {
+  position: fixed;
+  top: 0;
+  left: 20rpx;
+  right: 20rpx;
+  background: #fff;
+  border-top: 20rpx solid #f2f2f2;
+}
 .contentBox .topTab {
   font-size: 30rpx;
   line-height: 80rpx;
@@ -19,6 +27,8 @@
   align-items: center;
   padding: 0 40rpx;
   justify-content: space-between;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
 }
 .contentBox .topTab .tabItem {
   flex-basis: 48%;
@@ -28,6 +38,9 @@
 .contentBox .topTab .tabItem.active {
   color: #b76285;
   border-bottom: 2px solid #b76285;
+}
+.tabContent {
+  margin-top: 80rpx;
 }
 .tabContent .itemList .listItem {
   display: flex;
@@ -83,4 +96,10 @@
 .phone {
   padding: 10rpx 0;
   color: #666;
+}
+.none {
+  text-align: center;
+  padding: 50rpx 0;
+  font-size: 28rpx;
+  color: #ccc;
 }

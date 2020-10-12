@@ -3,126 +3,126 @@
 <view class="detailContainer">
   <!-- 患者信息 -->
   <view class="patientInfo infoContainer">
-      <view class="title">患者信息</view>
-      <view class="content">
-        <view class="contentItem">
-          <view class="itemName">患者姓名：</view>
-          <view class="itemInput">
-            {{detailData.patientName}}
-          </view>
+    <view class="title">患者信息</view>
+    <view class="content">
+      <view class="contentItem">
+        <view class="itemName">患者姓名：</view>
+        <view class="itemInput">
+          {{detailData.patientName}}
         </view>
-        <view class="contentItem">
-          <view class="itemName">身份证：</view>
-          <view class="itemInput">
-            {{detailData.idCard}}
-          </view>
+      </view>
+      <view class="contentItem">
+        <view class="itemName">身份证：</view>
+        <view class="itemInput">
+          {{detailData.idCard}}
         </view>
-        <view class="contentItem">
-          <view class="itemName">联系电话：</view>
-          <view class="itemInput">
-            {{detailData.phone}}
-          </view>
+      </view>
+      <view class="contentItem">
+        <view class="itemName">联系电话：</view>
+        <view class="itemInput">
+          {{detailData.phone}}
         </view>
-        <view class="contentItem">
-          <view class="itemName">省妇幼就诊卡</view>
-          <view class="itemInput">
-            {{detailData.medicalCard}}
-          </view>
+      </view>
+      <view class="contentItem">
+        <view class="itemName">省妇幼就诊卡</view>
+        <view class="itemInput">
+          {{detailData.medicalCard}}
         </view>
-        <view class="contentItem" style="align-items:baseline">
-          <view class="itemName">联系地址</view>
-          <view class="itemInput">
-            {{detailData.address}}
-          </view>
+      </view>
+      <view class="contentItem" style="align-items:baseline">
+        <view class="itemName">联系地址</view>
+        <view class="itemInput">
+          {{detailData.address}}
         </view>
-        <view class="contentItem">
-          <view class="itemName">病历资料</view>
-        </view>
-        <view class="uploadItem">
-          <view class="uploadBox" wx:if="{{detailData.picList.length > 0}}" wx:for="{{detailData.picList}}" wx:key="item">
-            <image src="{{item}}" data-index="{{index}}" bindtap="historyShowImg"></image>
-          </view>
+      </view>
+      <view class="contentItem">
+        <view class="itemName">病历资料</view>
+      </view>
+      <view class="uploadItem">
+        <view class="uploadBox" wx:if="{{detailData.picList.length > 0}}" wx:for="{{detailData.picList}}" wx:key="item">
+          <image src="{{item.pics}}" data-index="{{index}}" bindtap="historyShowImg"></image>
         </view>
       </view>
     </view>
-    <!-- 申请单位信息 -->
-    <view class="applyInfo infoContainer">
-      <view class="title">申请单位信息</view>
-      <view class="content">
-        <view class="contentItem">
-          <view class="itemName">单位名称：</view>
-          <view class="itemInput">
-            {{detailData.unitName}}
-          </view>
+  </view>
+  <!-- 申请单位信息 -->
+  <view class="applyInfo infoContainer">
+    <view class="title">申请单位信息</view>
+    <view class="content">
+      <view class="contentItem">
+        <view class="itemName">单位名称：</view>
+        <view class="itemInput">
+          {{detailData.unitName}}
         </view>
-        <view class="contentItem">
-          <view class="itemName">申请科室：</view>
-          <view class="itemInput">
-            {{detailData.departmentName}}
-          </view>
+      </view>
+      <view class="contentItem">
+        <view class="itemName">申请科室：</view>
+        <view class="itemInput">
+          {{detailData.departmentName}}
         </view>
-        <view class="contentItem">
-          <view class="itemName">申请医生：</view>
-          <view class="itemInput">
-            {{detailData.name}}
-          </view>
+      </view>
+      <view class="contentItem">
+        <view class="itemName">申请医生：</view>
+        <view class="itemInput">
+          {{detailData.name}}
         </view>
-        <view class="contentItem">
-          <view class="itemName">联系电话：</view>
-          <view class="itemInput">
-            {{detailData.doctorPhone}}
-          </view>
+      </view>
+      <view class="contentItem">
+        <view class="itemName">联系电话：</view>
+        <view class="itemInput">
+          {{detailData.doctorPhone}}
         </view>
       </view>
     </view>
-    <!-- 转诊信息 -->
-    <view class="zhuanzhenInfo infoContainer">
-      <view class="content">
-        <view class="contentItem">
-          <view class="itemName">转诊类型</view>
-          <view class="itemInput">
-            {{detailData.referralType == 0 ? '上转诊' : '下转诊'}}
-          </view>
+  </view>
+  <!-- 转诊信息 -->
+  <view class="zhuanzhenInfo infoContainer">
+    <view class="content">
+      <view class="contentItem">
+        <view class="itemName">转诊类型</view>
+        <view class="itemInput">
+          {{detailData.referralType == 0 ? '上转诊' : '下转诊'}}
         </view>
-        <view class="contentItem">
-          <view class="itemName">转诊医院：</view>
-          <view class="itemInput">
-            {{detailData.hospitalName}}
-          </view>
+      </view>
+      <view class="contentItem">
+        <view class="itemName">转诊医院：</view>
+        <view class="itemInput">
+          {{detailData.hospitalName}}
         </view>
-        <view class="contentItem">
-          <view class="itemName">发起人：</view>
-          <view class="itemInput">
-            {{detailData.sponsorName}}
-          </view>
+      </view>
+      <view class="contentItem">
+        <view class="itemName">发起人：</view>
+        <view class="itemInput">
+          {{detailData.sponsorName}}
         </view>
-        <view class="contentItem">
-          <view class="itemName">发起时间：</view>
-          <view class="itemInput">
-            {{detailData.recCreateDt}}
-          </view>
+      </view>
+      <view class="contentItem">
+        <view class="itemName">发起时间：</view>
+        <view class="itemInput">
+          {{detailData.recCreateDt}}
         </view>
       </view>
     </view>
-    <!-- 转诊审核信息 -->
-    <view class="zhuanzhenInfoStatus infoContainer">
-      <view class="title">
-        <text class="titleFont">转诊审核信息</text>
-        <text class='status pass' wx:if="{{detailData.referralStatus == 1}}">已通过</text>
-        <text class='status wait' wx:if="{{detailData.referralStatus == 0}}">待审核</text>
-        <text class='status return' wx:if="{{detailData.referralStatus == 2}}">已驳回</text>
-      </view>
-      <view class="content">
-        <view class="none" wx:if="{{!detailData.opinions}}">暂无审核信息</view>
-        <view class="info" class="{{ detailData.referralStatus == 2 ? 'info return' : 'info'}}" wx:else>{{detailData.opinions}}</view>
-      </view>
+  </view>
+  <!-- 转诊审核信息 -->
+  <view class="zhuanzhenInfoStatus infoContainer" wx:if="{{referralType == 1}}">
+    <view class="title">
+      <text class="titleFont">转诊审核信息</text>
+      <text class='status pass' wx:if="{{detailData.referralStatus == 1}}">已通过</text>
+      <text class='status wait' wx:if="{{detailData.referralStatus == 0}}">待审核</text>
+      <text class='status return' wx:if="{{detailData.referralStatus == 2}}">已驳回</text>
     </view>
-    <!-- 处理按钮，我接收的 -->
-    <view class="handleBtns" wx:if="{{referralType == 2}}">
-      <view class="reply" bindtap="replyTap">转发</view>
-      <view class="pass" bindtap="passTap">通过</view>
-      <view class="return" bindtap="returnTap">驳回</view>
+    <view class="content">
+      <view class="none" wx:if="{{!detailData.opinions}}">暂无审核信息</view>
+      <view class="info" class="{{ detailData.referralStatus == 2 ? 'info return' : 'info'}}" wx:else>{{detailData.opinions}}</view>
     </view>
+  </view>
+  <!-- 处理按钮，我接收的 -->
+  <view class="handleBtns" wx:if="{{referralType == 2}}">
+    <view class="reply" bindtap="replyTap">转发</view>
+    <view class="pass" bindtap="passTap">通过</view>
+    <view class="return" bindtap="returnTap">驳回</view>
+  </view>
 </view>
 <view class="handleContainer" wx:if="{{showPopBox}}">
   <view class="mask"></view>

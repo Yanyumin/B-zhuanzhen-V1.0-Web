@@ -22,7 +22,7 @@
 }
 .infoContainer .content .contentItem {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   font-size: 28rpx;
   padding-top: 40rpx;
   justify-content: space-between;
@@ -37,6 +37,7 @@
   box-sizing: border-box;
   line-height: 40rpx;
   color: #393939;
+  word-break: break-all;
 }
 .uploadItem {
   display: flex;
