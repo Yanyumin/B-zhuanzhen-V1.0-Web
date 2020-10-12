@@ -21,8 +21,12 @@ Page({
         checked: false
       }
     ],
-    HospClumn: ['yiyuan', 'eryuan'],
-    partClumn: ['yiyuan', 'eryuan'],
+    // 转诊医院列表
+    HospClumn: [],
+    hospDatas: [],
+    // 单位列表
+    partClumn: [],
+    partDatas: [],
     service: [{
       checked: false,
       name: '我同意'
@@ -37,6 +41,7 @@ Page({
     historyPics: [],
     zhuanzhenSelect: '',
     zhuanzhenHospName: '',
+    zhuanzhenHospId: '',
     applyPartName: '',
     applyDepartName: '',
     applyDoc: '',
@@ -84,22 +89,28 @@ Page({
     })
   },
   // 协议选择
-  serviceChange (e) {
-    console.log(e)
-    this.setData({
-      serviceValue: e.detail.value
-    })
-  },
-  serviceRadioTap (e) {
-    let servise = this.data.service
-    servise[0].checked = !(servise[0].checked);
-    if (servise[0].checked == false) {
-      this.data.serviceValue = ''
+  checkboxChange(e) {
+    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+    let serviceValue = this.data.serviceValue
+    const items = this.data.service
+    const values = e.detail.value
+    for (let i = 0, lenI = items.length; i < lenI; ++i) {
+      items[i].checked = false
+      serviceValue = ''
+
+      for (let j = 0, lenJ = values.length; j < lenJ; ++j) {
+        if (items[i].name === values[j]) {
+          items[i].checked = true
+          serviceValue = '我同意'
+          break
+        }
+      }
     }
-    console.log(servise)
+
     this.setData({
-      servise
-    });
+      service: items,
+      serviceValue
+    })
   },
   // 联系地址输入值
   connectAddressInput (e) {
@@ -193,9 +204,11 @@ Page({
     })
   },
   
+  // 医院选择
   hospBindChange (e) {
     this.setData({
-      zhuanzhenHospName: this.data.HospClumn[e.detail.value]
+      zhuanzhenHospName: this.data.HospClumn[e.detail.value],
+      zhuanzhenHospId: this.data.hospDatas[e.detail.value].id
     })
   },
   partBindChange (e) {
@@ -205,17 +218,58 @@ Page({
   },
   zhuanzhenTypeChange(e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value)
+    let zhuanzhenSelect = ''
 
     const zhuanzhenType = this.data.zhuanzhenType
     for (let i = 0, len = zhuanzhenType.length; i < len; ++i) {
       zhuanzhenType[i].checked = zhuanzhenType[i].name === e.detail.value
+      if (zhuanzhenType[i].checked) {
+        zhuanzhenSelect = Number(i)
+      }
     }
 
     this.setData({
       zhuanzhenType,
-      zhuanzhenSelect: e.detail.value
+      zhuanzhenSelect
     })
   },
+  // 获取医院列表信息
+  getHospList () {
+    let that = this
+    let HospClumn = that.data.HospClumn
+    HospClumn = []
+    request({
+      url: 'ReferralPlatform/ReferralHospital',
+      method: 'POST'
+    }).then(res => {
+      if (res.statusCode === 200) {
+        if (res.data.resultCode == 1) {
+          let resultData = res.data.data
+          resultData.forEach(item => {
+            HospClumn.push(item.name)
+          })
+          that.setData({
+            hospDatas: resultData,
+            HospClumn
+          })
+        } else {
+          wx.showToast({
+            title: res.data.message || '医院信息获取失败',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      } else {
+        wx.showToast({
+          title: '医院信息获取失败',
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    })
+  },
+  // 获取单位列表信息
+  // 提交
   submitForm () {
     let that = this
     if(!that.data.serviceValue) {
@@ -270,14 +324,16 @@ Page({
         duration: 2000
       })
       return
-    } else if (that.data.historyPics.length == 0) {
-      wx.showToast({
-        title: '患者病历资料未上传',
-        icon: 'none',
-        duration: 2000
-      })
-      return
-    } else if (!that.data.zhuanzhenSelect) {
+    } 
+    // else if (that.data.historyPics.length == 0) {
+    //   wx.showToast({
+    //     title: '患者病历资料未上传',
+    //     icon: 'none',
+    //     duration: 2000
+    //   })
+    //   return
+    // } 
+    else if (!that.data.zhuanzhenSelect) {
       wx.showToast({
         title: '上下转诊未选择',
         icon: 'none',
@@ -334,6 +390,48 @@ Page({
       })
       return
     }
+    wx.showLoading({
+      title: '提交中',
+    })
+    let params = {
+      patientName: that.data.patientName,
+      idCard: that.data.idNumber,
+      phone: that.data.phone,
+      medicalCard: that.data.cardNum,
+      address: that.data.connectAddress,
+      referralType: that.data.zhuanzhenSelect,
+      referralHospitalId: that.data.zhuanzhenHospId,
+      referralHospitalName: that.data.zhuanzhenHospName,
+      sponsorName: that.data.applyMan,
+      unitName: that.data.applyPartName || '单位测试',
+      departmentName: that.data.applyDepartName,
+      name: that.data.applyDoc,
+      doctorPhone: that.data.applyPhone,
+      workOrderPics: that.data.historyPics,
+    }
+    request({
+      url: 'ReferralPlatform/AddReferralRequestForm',
+      method: 'POST',
+      data: params
+    }).then(res => {
+      if (res.statusCode === 200) {
+        if (res.data.resultCode == 1) {
+          wx.showToast({
+            title: '提交成功',
+            icon: 'success',
+            duration: 2000
+          })
+          that.setData({
+            isSuccess: true
+          })
+        } else {
+          
+        }
+      } else {
+        
+      }
+      wx.hideLoading()
+    })
   },
   // 动态设置元素的高度
   getTargetHeight () {
@@ -356,6 +454,7 @@ Page({
     this.setData({
       winHeight: wx.getSystemInfoSync().windowHeight
     })
+    this.getHospList()
   },
 
   /**

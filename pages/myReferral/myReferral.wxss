@@ -2,6 +2,7 @@
 .myContainer {
   background: #f2f2f2;
   padding: 20rpx;
+  box-sizing: border-box;
 }
 .contentBox {
   background: #fff;
@@ -58,6 +59,7 @@
   font-size: 28rpx;
   font-weight: 600;
   color: #666;
+  word-wrap: break-word;
 }
 .tabContent .itemList .listItem .itemInfo .itemName .status {
   font-size: 28rpx;
@@ -76,4 +78,9 @@
   font-size: 26rpx;
   word-break: break-all;
   line-height: 32rpx;
+  word-wrap: break-word;
+}
+.phone {
+  padding: 10rpx 0;
+  color: #666;
 }

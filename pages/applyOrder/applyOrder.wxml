@@ -71,7 +71,8 @@
           <view class="itemName">转诊医院：</view>
           <view class="itemInput pickerBox">
             <picker bindchange="hospBindChange" value="{{index}}" range="{{HospClumn}}">
-              <view class="picker">{{zhuanzhenHospName}}</view>
+              <!-- <view class="picker">{{zhuanzhenHospName}}</view> -->
+              <input type="text" disabled class="picker" value="{{zhuanzhenHospName}}" />
               <view class="stringle"></view>
             </picker>
           </view>
@@ -86,7 +87,8 @@
           <view class="itemName">单位名称：</view>
           <view class="itemInput pickerBox">
             <picker bindchange="partBindChange" value="{{index}}" range="{{partClumn}}">
-              <view class="picker">{{applyPartName}}</view>
+              <!-- <view class="picker">{{applyPartName}}</view> -->
+              <input type="text" disabled class="picker" value="{{applyPartName}}" />
               <view class="stringle"></view>
             </picker>
           </view>
@@ -120,16 +122,15 @@
     <!-- 是否同意协议 -->
     <view class="agreement">
       <view class="radioBox">
-        <radio-group bind:change="serviceChange">
+              
+        <checkbox-group bindchange="checkboxChange">
           <view class="serviceBox" wx:for="{{service}}" wx:key="name">
             <view class="weui-cell__hd">
-              <radio color="#333333" 
-              bindtap="serviceRadioTap"
-              data-index="{{index}}" value="{{item.name}}" checked="{{item.checked}}"/>
+              <checkbox value="{{item.name}}" checked="{{item.checked}}"/>
             </view>
             <view class="weui-cell__bd">{{item.name}}<text>《转诊xx协议》</text></view>
           </view>
-        </radio-group>
+        </checkbox-group>
       </view>
     </view>
     <!-- 提交按钮 -->

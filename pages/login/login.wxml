@@ -1,0 +1,21 @@
+<!--pages/login/login.wxml-->
+<view class="loginContainer"style="min-height: {{winHeight}}px">
+  <view class="loginContent">
+    <view class="loginTitle">登 录</view>
+    <view class="loginItem">
+      <view class="itemName">手机号码</view>
+      <view class="itemInput">
+        <input type="number" auto-focus placeholder="请输入手机号码" placeholder-style="color:#d4d4d4" value="{{account}}" bindinput="accountChange"/>
+      </view>
+    </view>
+    <view class="loginItem">
+      <view class="itemName">密码</view>
+      <view class="itemInput">
+        <input password type="text" placeholder="请输入密码" placeholder-style="color:#d4d4d4" value="{{password}}" bindinput="passwordChange" />
+      </view>
+    </view>
+    <view class="loginItem">
+      <view class="btn" bindtap="submitLogin">登录</view>
+    </view>
+  </view>
+</view>

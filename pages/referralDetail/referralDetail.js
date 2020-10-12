@@ -1,10 +1,15 @@
 // pages/referralDetail/referralDetail.js
+const { request, baseURL } = require("../../utils/request")
+const {formateInputTime} = require("../../utils/util")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    id: '',
+    referralType: '',
+    detailData: {},
     historyPics: ['../../imgs/swiper.jpg','../../imgs/swiper.jpg','../../imgs/swiper.jpg','../../imgs/swiper.jpg','../../imgs/swiper.jpg'],
     partClumn: ['ceshi'],
     // 转发
@@ -18,9 +23,43 @@ Page({
     showPopBox: false,
     // 弹窗显示类型，1=转发 2=转诊 3=驳回
     showPopType: 1,
-    styleTop: '40%'
+    styleTop: '40%',
+    // 自己处理的转发
+    departmentNames: [],
+    departmentDatas: [],
   },
-
+  // 获取详情
+  getDetailData () {
+    let that = this
+    let detailData = that.data.detailData
+    wx.showLoading({
+      title: '加载中……',
+      mask: true
+    })
+    request({
+      url: 'ReferralPlatform/CheckReferralDetails?orderid=' + that.data.id,
+      method: 'POST',
+    }).then(res => {
+      if (res.statusCode === 200) {
+        if (res.data.resultCode == 1) {
+          detailData = res.data.row
+          detailData.recCreateDt = formateInputTime(detailData.recCreateDt)
+          this.setData({
+            detailData
+          })
+        } else {
+          wx.showToast({
+            title: res.data.message || '数据获取失败',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      } else {
+        
+      }
+      wx.hideLoading()
+    })
+  },
   // 病历资料图片预览
   historyShowImg: function (e) {
     var that = this;
@@ -91,7 +130,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      id: options.id,
+      referralType: options.type
+    })
+    this.getDetailData()
   },
 
   /**

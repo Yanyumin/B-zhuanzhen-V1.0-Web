@@ -1,0 +1,55 @@
+/* pages/login/login.wxss */
+.loginContainer {
+  padding: 0 20rpx 40rpx;
+  background: #f2f2f2;
+  padding-top: 25rpx;
+  box-sizing: border-box;
+}
+.loginContent {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  width: 70%;
+  margin: 0 auto;
+  position: relative;
+  top: 40%;
+  transform: translate(0 ,40%);
+}
+.loginContent .loginTitle {
+  text-align: center;
+  font-weight: 600;
+  line-height: 50rpx;
+  padding-bottom: 50rpx;
+  color: #333333;
+}
+.loginContent .loginItem {
+  margin-bottom: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  color: #7b7b7b;
+}
+.loginContent .loginItem .itemName {
+  flex: 3;
+}
+.loginContent .loginItem .itemInput {
+  flex: 5;
+  border: 1px solid #f2f2f2;
+  padding: 0 20rpx;
+  border-radius: 30rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loginContent .loginItem .btn {
+  background-color: #33cccc;
+  color: #fff;
+  height: 60rpx;
+  border-radius: 30rpx;
+  width: 100%;
+  text-align: center;
+  line-height: 60rpx;
+  margin-top: 40rpx;
+}

@@ -4,7 +4,8 @@
     "pages/logs/logs",
     "pages/applyOrder/applyOrder",
     "pages/myReferral/myReferral",
-    "pages/referralDetail/referralDetail"
+    "pages/referralDetail/referralDetail",
+    "pages/login/login"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,37 @@
+var formatStatus = function (status) {
+  var statusName = ''
+  switch (status) {
+    case 0:
+      statusName = '待审核'
+      break
+    case 1: 
+      statusName = '已通过'
+      break
+    case 2:
+      statusName = '已驳回'
+      break
+    default:
+      statusName = '未知'
+      break
+  }
+  return statusName
+}
+var formatReferralType = function (type) {
+  var statusName = ''
+  switch (status) {
+    case 0:
+      statusName = '上转诊'
+      break
+    case 1: 
+      statusName = '下转诊'
+      break
+    default:
+      statusName = '未知'
+      break
+  }
+  return statusName
+}
+module.exports = {
+  formatStatus: formatStatus,
+  formatReferralType: formatReferralType
+}

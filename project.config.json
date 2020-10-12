@@ -4,7 +4,7 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": true,
     "enhance": false,
     "postcss": true,
@@ -74,6 +74,13 @@
         {
           "name": "pages/referralDetail/referralDetail",
           "pathName": "pages/referralDetail/referralDetail",
+          "query": "id=6&type=1",
+          "scene": null
+        },
+        {
+          "name": "pages/login/login",
+          "pathName": "pages/login/login",
+          "query": "",
           "scene": null
         }
       ]

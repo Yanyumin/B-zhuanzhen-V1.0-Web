@@ -18,7 +18,15 @@ const checkIDCard = (idcode) => {
   return reg.test(idcode)
 }
 
+// 时间格式化
+const formateInputTime =  (n) => {
+  var date = n.slice(0, 10)
+  var time = n.slice(11, 19)
+  var dateTime = date + ' ' + time
+  return dateTime
+}
 module.exports = {
   formatTime: formatTime,
-  checkIDCard
+  checkIDCard,
+  formateInputTime
 }

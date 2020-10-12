@@ -1,4 +1,5 @@
 <!--pages/myReferral/myReferral.wxml-->
+<wxs src="../../utils/formater.wxs" module="filter" />
 <view class="myContainer"style="min-height: {{winHeight}}px">
   <view class="contentBox">
     <view class="topTab">
@@ -8,16 +9,19 @@
     <view class="tabContent">
       <view class="itemContent" wx:if="{{tabChange == 0}}">
         <view class="itemList">
-          <view class="listItem">
-            <view class="itemLogo">
+          <view class="listItem" wx:for="{{list1}}" wx:key="id" data-id="{{item.id}}" data-type="1" bindtap="goViewDetail">
+            <!-- <view class="itemLogo">
               <image src="../../imgs/swiper.jpg" />
-            </view>
+            </view> -->
             <view class="itemInfo">
               <view class="itemName">
-                <text class='name'>李医生</text>
-                <text class='status pass'>已通过</text>
+                <text class='name'>{{item.patientName}}</text>
+                <text class='status pass' wx:if="{{item.referralStatus == 1}}">{{filter.formatStatus(item.referralStatus)}}</text>
+                <text class='status wait' wx:if="{{item.referralStatus == 0}}">{{filter.formatStatus(item.referralStatus)}}</text>
+                <text class='status return' wx:if="{{item.referralStatus == 2}}">{{filter.formatStatus(item.referralStatus)}}</text>
               </view>
-              <view class="itemIntro">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</view>
+              <view class="itemIntro phone">{{item.phone}}</view>
+              <view class="itemIntro">{{item.address}}</view>
             </view>
           </view>
         </view>
