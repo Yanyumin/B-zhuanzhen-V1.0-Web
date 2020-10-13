@@ -11,7 +11,7 @@
     <view class="tabContent">
       <view class="itemContent" wx:if="{{tabChange == 0}}">
         <view class="itemList" wx:if="{{list1.length > 0}}">
-          <view class="listItem" wx:for="{{list1}}" wx:key="id" data-id="{{item.id}}" data-type="1" bindtap="goViewDetail">
+          <view class="listItem" wx:for="{{list1}}" wx:key="id" data-id="{{item.id}}" data-type="1" data-status="{{item.referralStatus}}" bindtap="goViewDetail">
             <!-- <view class="itemLogo">
               <image src="../../imgs/swiper.jpg" />
             </view> -->
@@ -27,7 +27,6 @@
             </view>
           </view>
         </view>
-        <view class="none" wx:else>暂无数据</view>
         <view class="none" wx:if="{{isOver1}}">已经到底啦~</view>
       </view>
       <view class="itemContent" wx:if="{{tabChange == 1}}">

@@ -35,7 +35,7 @@
           {{detailData.address}}
         </view>
       </view>
-      <view class="contentItem">
+      <view class="contentItem" wx:if="{{detailData.picList.length > 0}}">
         <view class="itemName">病历资料</view>
       </view>
       <view class="uploadItem">
@@ -108,9 +108,9 @@
   <view class="zhuanzhenInfoStatus infoContainer" wx:if="{{referralType == 1}}">
     <view class="title">
       <text class="titleFont">转诊审核信息</text>
-      <text class='status pass' wx:if="{{detailData.referralStatus == 1}}">已通过</text>
-      <text class='status wait' wx:if="{{detailData.referralStatus == 0}}">待审核</text>
-      <text class='status return' wx:if="{{detailData.referralStatus == 2}}">已驳回</text>
+      <text class='status pass' wx:if="{{status == 1}}">已通过</text>
+      <text class='status wait' wx:if="{{status == 0}}">待审核</text>
+      <text class='status return' wx:if="{{status == 2}}">已驳回</text>
     </view>
     <view class="content">
       <view class="none" wx:if="{{!detailData.opinions}}">暂无审核信息</view>

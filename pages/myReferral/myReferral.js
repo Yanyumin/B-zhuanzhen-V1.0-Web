@@ -59,9 +59,9 @@ Page({
     })
   },
   goViewDetail (e) {
-    let {id , type} = e.currentTarget.dataset
+    let {id , type, status} = e.currentTarget.dataset
     wx.navigateTo({
-      url: '../referralDetail/referralDetail?id=' + id + '&type=' + type,
+      url: '../referralDetail/referralDetail?id=' + id + '&type=' + type + '&status=' + status,
     })
   },
   /**
@@ -119,11 +119,10 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.setData({
-      pageSize: 10,
-      pageCurrent: this.data.pageCurrent + 1
-    })
     if (!this.data.isOver1) {
+      this.setData({
+        pageCurrent: this.data.pageCurrent + 1
+      })
       this.getListData1()
     }
   },

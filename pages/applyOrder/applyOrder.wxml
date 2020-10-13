@@ -37,7 +37,7 @@
             <textarea class="textCon" bindinput="connectAddressInput" bindlinechange="lineChange" value="{{connectAddress}}" auto-height />
           </view>
         </view>
-        <view class="uploadItem">
+        <!-- <view class="uploadItem">
           <view class="uploadBox" wx:if="{{historyPics.length > 0}}" wx:for="{{historyPics}}" wx:key="item">
             <image src="{{item}}" data-index="{{index}}" bindtap="historyShowImg"></image>
             <text class="deleteIcon" bindtap="historyDelete" data-index="{{index}}">×</text>
@@ -51,7 +51,7 @@
               请上传病历、检查、影像等辅助资料以便医生全面了解病情
             </view>
           </view>
-        </view>
+        </view> -->
       </view>
     </view>
     <!-- 转诊信息 -->
@@ -85,12 +85,13 @@
       <view class="content">
         <view class="contentItem">
           <view class="itemName">单位名称：</view>
-          <view class="itemInput pickerBox">
+          <view class="itemInput">
+           <!-- pickerBox
             <picker bindchange="partBindChange" value="{{index}}" range="{{partClumn}}">
-              <!-- <view class="picker">{{applyPartName}}</view> -->
               <input type="text" disabled class="picker" value="{{applyPartName}}" />
               <view class="stringle"></view>
-            </picker>
+            </picker> -->
+            <input type="text" bindinput="applyPartNameChange" value="{{applyPartName}}" />
           </view>
         </view>
         <view class="contentItem">
@@ -143,10 +144,10 @@
       <icon size="18" class="icon-box-img" color="#38dd7e" type="success" size="93"></icon>
     </view>
     <view class="title">提交成功，等待审核</view>
-    <view class="tips">会诊信息预计会在48小时内审核完成，审核通过后系统会发送短信提示，请随时留意</view>
+    <view class="tips">转诊申请预计会在48小时内审核完成，审核通过后系统会发送短信提示，请随时留意</view>
     <view class="viewBtns">
-      <view class="viewDetail">查看申请</view>
-      <view class="goIndex">返回首页</view>
+      <view class="viewDetail" bindtap="viewDetail">查看申请</view>
+      <view class="goIndex" bindtap="goIndex">返回首页</view>
     </view>
   </view>
 </view>

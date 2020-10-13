@@ -1,5 +1,5 @@
 // pages/applyOrder/applyOrder.js
-const { request, baseURL } = require("../../utils/request")
+const { request, uploadBaseUrl } = require("../../utils/request")
 const { checkIDCard } = require("../../utils/util")
 Page({
 
@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    orderid: '',
     height: '110rpx',
     winHeight: '',
     isSuccess: false,
@@ -66,6 +67,11 @@ Page({
   cardNumChange (e) {
     this.setData({
       cardNum: e.detail.value
+    })
+  },
+  applyPartNameChange (e) {
+    this.setData({
+      applyPartName: e.detail.value
     })
   },
   applyDepartNameChange (e) {
@@ -144,12 +150,12 @@ Page({
               for (let i in tempFilePaths) {
                 wx.uploadFile({
                   method: "POST",
-                  url: baseURL + 'ImgFile/SaveImages',
+                  url: uploadBaseUrl + 'ToUploadPictures/ImageUpload',
                   filePath: tempFilePaths[i],
-                  name: 'file',
+                  name: 'formData',
                   success: function (res) {
-                    let data = JSON.parse(res.data)
                     if (res.statusCode == 200) {
+                      let data = JSON.parse(res.data)
                       historyPics.push(data.ResultMsg)
                       that.setData({
                         logoFlag: true,
@@ -333,7 +339,7 @@ Page({
     //   })
     //   return
     // } 
-    else if (!that.data.zhuanzhenSelect) {
+    else if (that.data.zhuanzhenSelect === '') {
       wx.showToast({
         title: '上下转诊未选择',
         icon: 'none',
@@ -403,14 +409,14 @@ Page({
       referralHospitalId: that.data.zhuanzhenHospId,
       referralHospitalName: that.data.zhuanzhenHospName,
       sponsorName: that.data.applyMan,
-      unitName: that.data.applyPartName || '单位测试',
+      unitName: that.data.applyPartName,
       departmentName: that.data.applyDepartName,
       name: that.data.applyDoc,
       doctorPhone: that.data.applyPhone,
       workOrderPics: that.data.historyPics,
     }
     request({
-      url: 'ReferralPlatform/AddReferralRequestForm',
+      url: 'ReferralPlatform/tianjiabiao',
       method: 'POST',
       data: params
     }).then(res => {
@@ -422,15 +428,36 @@ Page({
             duration: 2000
           })
           that.setData({
-            isSuccess: true
+            isSuccess: true,
+            orderid: res.data.row.id
           })
         } else {
-          
+          wx.showToast({
+            title: res.data.message || '提交失败,请重新提交',
+            icon: 'none',
+            duration: 2000
+          })
         }
       } else {
-        
+        wx.showToast({
+          title: '提交失败,请重新提交',
+          icon: 'none',
+          duration: 2000
+        })
       }
       wx.hideLoading()
+    })
+  },
+  // 去首页
+  goIndex () {
+    wx.redirectTo({
+      url: '../myReferral/myReferral',
+    })
+  },
+  // 查看申请
+  viewDetail () {
+    wx.redirectTo({
+      url: '../referralDetail/referralDetail?id='+this.data.orderid +'&type=1',
     })
   },
   // 动态设置元素的高度

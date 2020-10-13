@@ -5,6 +5,7 @@
 // }
 // 定义 request 函数，专门用于化简 request
 const baseURL = 'http://192.168.2.38:8805/Zz/api/'
+const uploadBaseUrl = 'http://192.168.2.38:8805/api/'
 const request = (params) => {
 // 通过 Promise 对象，把请求成功和失败的回调函数进行封装
 return new Promise((resolve, reject) => {
@@ -41,5 +42,6 @@ return new Promise((resolve, reject) => {
 // 把封装的方法导出
 module.exports = {
 request,
-baseURL
+baseURL,
+uploadBaseUrl
 }

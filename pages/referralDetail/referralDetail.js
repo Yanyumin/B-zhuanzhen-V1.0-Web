@@ -45,7 +45,7 @@ Page({
           detailData = res.data.row
           detailData.recCreateDt = formateInputTime(detailData.recCreateDt)
           let historyPics = that.data.historyPics
-          historyPics = detailData.pics.split(',')
+          historyPics = detailData.pics ? detailData.pics.split(',') : []
           this.setData({
             detailData,
             historyPics
@@ -170,7 +170,8 @@ Page({
   onLoad: function (options) {
     this.setData({
       id: options.id,
-      referralType: options.type
+      referralType: options.type || 1,
+      status: options.status
     })
     this.getDetailData()
     // 如果是我接收的
