@@ -1,0 +1,40 @@
+<!--index.wxml-->
+<view class="indexContainer" style="min-height: {{height}}px">
+  <!-- 轮播图 -->
+  <view class="swiper">
+    <!-- <image src="../../imgs/swiper.jpg" /> -->
+    <swiper indicator-dots="{{indicatorDots}}"
+      autoplay="true" interval="6000" duration="1000" circular="true">
+      <block wx:for="{{imgUrls}}" wx:key="index">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" width="100%"/>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- 内容 -->
+  <view class="content">
+    <!-- tab栏 -->
+    <view class="tabContent">
+      <view class="tabItem active">转诊申请</view>
+      <view class="tabItem">我的转诊</view>
+    </view>
+    <!-- tab栏内容 -->
+    <view class="tabItemCon">
+      <view class="itemConTitle">会诊专家介绍</view>
+      <view class="docList">
+        <view class="listItem">
+          <view class="itemLogo">
+            <image src="../../imgs/swiper.jpg" />
+          </view>
+          <view class="itemInfo">
+            <view class="itemName">李医生</view>
+            <view class="itemIntro">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="tabItemCon"></view>
+  </view>
+</view>
+<!-- <dialog></dialog> -->

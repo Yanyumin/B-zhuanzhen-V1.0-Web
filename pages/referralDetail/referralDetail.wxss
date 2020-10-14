@@ -91,6 +91,7 @@
   word-wrap: break-word;
 }
 .zhuanzhenInfoStatus .content .info.return{
+  background: transparent !important;
    color: #b76285
  }
  .handleBtns {

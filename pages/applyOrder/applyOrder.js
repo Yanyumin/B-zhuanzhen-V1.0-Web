@@ -414,6 +414,7 @@ Page({
       name: that.data.applyDoc,
       doctorPhone: that.data.applyPhone,
       workOrderPics: that.data.historyPics,
+      doctorId: wx.getStorageSync('userInfo').doctorId
     }
     request({
       url: 'ReferralPlatform/tianjiabiao',

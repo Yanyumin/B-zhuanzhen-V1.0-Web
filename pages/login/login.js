@@ -48,6 +48,7 @@ Page({
       return
     }
     let md5Password = md5.md5(this.data.password)
+    md5Password = md5Password.toLowerCase()
     console.log(md5Password)
     request({
       url: 'Auth/Login',
@@ -65,7 +66,10 @@ Page({
             icon: 'success',
             duration: 2000
           })
-          wx.setStorageSync('userInfo', res.data.rows)
+          wx.setStorageSync('userInfo', res.data.row)
+          wx.redirectTo({
+            url: '../index/index',
+          })
         } else {
           wx.showToast({
             title: res.data.message || '登录失败。请重新登录',

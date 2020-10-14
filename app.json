@@ -3,7 +3,7 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/applyOrder/applyOrder",
-    "pages/myReferral/myReferral",
+    "pages/home/home",
     "pages/referralDetail/referralDetail",
     "pages/login/login"
   ],

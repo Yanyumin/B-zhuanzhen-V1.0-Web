@@ -1,6 +1,5 @@
 {
-  "usingComponents": {
-    "dialog": "../../components/dialog/dialog"
-  },
-  "navigationBarTitleText": "省妇幼远程转诊申请平台"
+  "usingComponents": {},
+  "enablePullDownRefresh": true,"backgroundTextStyle": "dark",
+  "navigationBarTitleText": "我的转诊"
 }

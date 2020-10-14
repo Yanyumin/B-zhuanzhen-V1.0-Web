@@ -1,0 +1,83 @@
+/**index.wxss**/
+.indexContainer {
+  padding: 20rpx;
+  background: #f2f2f2;
+  box-sizing: border-box;
+}
+.swiper {
+  border: 1px solid #f1f1f1;
+}
+.swiper .slide-image {
+  height: 100%;
+  width: 100%;
+}
+.content {
+  padding-top: 20rpx;
+}
+.tabContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.tabContent .tabItem {
+  flex-basis: 49%;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  border-radius: 10rpx;
+  background: #fff;
+  font-size: 30rpx;
+  color: #949494;
+}
+.tabContent .tabItem.active {
+  background-color: #b76285;
+  color: #fff;
+}
+.tabItemCon {
+  padding: 0 40rpx;
+  background: #fff;
+  margin-top: 20rpx;
+  border-radius: 10rpx;
+}
+.tabItemCon .itemConTitle {
+  line-height: 80rpx;
+  color: #949494;
+  border-bottom: 1px dashed #e4e4e4;
+  font-size: 30rpx;
+}
+.tabItemCon .docList {
+  padding-bottom: 60rpx;
+}
+.tabItemCon .docList .listItem {
+  display: flex;
+  align-items: center;
+  padding: 25rpx 0;
+  border-bottom: 1px solid #e4e4e4;
+}
+.tabItemCon .docList .listItem .itemLogo {
+  flex: 1;
+}
+.tabItemCon .docList .listItem .itemLogo image {
+  border-radius: 50%;
+  height: 50rpx;
+  width: 50rpx;
+}
+.tabItemCon .docList .listItem .itemInfo {
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.tabItemCon .docList .listItem .itemInfo .itemName {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #666;
+  padding-bottom: 10rpx;
+}
+.tabItemCon .docList .listItem .itemInfo .itemIntro{
+  color: rgb(131, 131, 131);
+  font-size: 26rpx;
+  word-break: break-all;
+  line-height: 32rpx;
+}
